@@ -1,0 +1,22 @@
+{
+  "name": "@warrant/paypal",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Typed PayPal REST client (orders, payments, disputes, webhooks, idempotency) and a sandbox simulator that speaks the same API",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --coverage",
+    "test:int": "vitest run -c vitest.int.config.ts"
+  },
+  "dependencies": {
+    "@warrant/warrant": "workspace:^"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^5.0.5",
+    "vitest": "^5.0.5"
+  }
+}

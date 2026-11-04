@@ -1,0 +1,38 @@
+{
+  "name": "warrant",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Warrant: signed proof of agent purchase authorisation, verified at PayPal checkout and used for dispute resolution.",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=9"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @warrant/server --filter @warrant/web run dev",
+    "build": "pnpm -r --if-present run build",
+    "start": "pnpm --filter @warrant/server run start",
+    "db:migrate": "pnpm --filter @warrant/server run db:migrate",
+    "typecheck": "pnpm -r --if-present run typecheck",
+    "lint": "eslint .",
+    "test": "pnpm -r --if-present run test",
+    "keygen": "pnpm --silent --filter @warrant/warrant run keygen",
+    "eval": "pnpm --filter @warrant/sim run eval",
+    "e2e": "pnpm --filter @warrant/web run build && pnpm --filter @warrant/e2e run e2e",
+    "paypal:doctor": "pnpm --filter @warrant/server run paypal:doctor",
+    "test:int": "pnpm --filter @warrant/paypal run test:int",
+    "docs:check": "node scripts/check-docs.mjs",
+    "secrets:check": "node scripts/check-secrets.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.20.5",
+    "eslint": "^10.13.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.13.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2"
+  }
+}

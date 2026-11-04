@@ -1,0 +1,22 @@
+# Keep the build context small and keep local-only material out of every image layer.
+**/node_modules
+**/dist
+**/coverage
+**/test-results
+**/playwright-report
+**/.data
+**/.data-*
+.git
+.github
+.claude
+.vscode
+.idea
+.env
+.env.*
+!.env.example
+*.log
+*.pem
+*.key
+_strategy
+e2e/tests
+sim/report.json.tmp

@@ -1,0 +1,28 @@
+{
+  "name": "@warrant/mcp",
+  "version": "0.0.0",
+  "private": true,
+  "description": "MCP server with read-only Warrant tools: verify a warrant, read a dispute's facts",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "bin": {
+    "warrant-mcp": "./src/main.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --coverage",
+    "start": "tsx src/main.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^5.0.5",
+    "@warrant/server": "workspace:^",
+    "tsx": "^4.23.15",
+    "vitest": "^5.0.5"
+  }
+}

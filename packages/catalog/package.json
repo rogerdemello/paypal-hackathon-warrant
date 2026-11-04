@@ -1,0 +1,21 @@
+{
+  "name": "@warrant/catalog",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Product catalog: Channel3 client, deterministic fixtures, listing snapshots and hashes",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@warrant/warrant": "workspace:^"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^5.0.5",
+    "vitest": "^5.0.5"
+  }
+}
