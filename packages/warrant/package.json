@@ -1,0 +1,27 @@
+{
+  "name": "@warrant/warrant",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Generic signing and audit primitives: integer-cents money, RFC 8785 canonical JSON, Ed25519 JWS, SHA-256 hash-chained ledger. Pure TypeScript: no network, no database, no clock.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --coverage",
+    "test:watch": "vitest",
+    "keygen": "tsx scripts/keygen.ts",
+    "vectors": "tsx scripts/vectors.ts"
+  },
+  "dependencies": {
+    "jose": "^6.2.12",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^5.0.5",
+    "fast-check": "^4.10.2",
+    "tsx": "^4.23.15",
+    "vitest": "^5.0.5"
+  }
+}

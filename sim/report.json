@@ -1,0 +1,1809 @@
+{
+  "generated_at": "2026-11-04T14:48:20.586Z",
+  "environment": {
+    "paypal": "simulator",
+    "mode": "fixtures",
+    "note": "Run with fixed time and sequential ids; no model calls."
+  },
+  "limitation": "The corpus is authored by us, so these results show that the pipeline behaves as designed. They are not a measurement of real-world dispute win rates, and the PayPal simulator is not PayPal.",
+  "corpus": {
+    "scenarios": 87,
+    "passed": 87,
+    "failed": 0,
+    "families": [
+      {
+        "family": "remorse",
+        "title": "Honest purchase, later \"I never ordered\"",
+        "scenarios": 8,
+        "passed": 8
+      },
+      {
+        "family": "cart_swap",
+        "title": "Cart swap",
+        "scenarios": 8,
+        "passed": 8
+      },
+      {
+        "family": "scope_stretch",
+        "title": "Scope stretch",
+        "scenarios": 9,
+        "passed": 9
+      },
+      {
+        "family": "forgery",
+        "title": "Forgery",
+        "scenarios": 8,
+        "passed": 8
+      },
+      {
+        "family": "replay_audience",
+        "title": "Replay and audience",
+        "scenarios": 6,
+        "passed": 6
+      },
+      {
+        "family": "key_time",
+        "title": "Key and time",
+        "scenarios": 7,
+        "passed": 7
+      },
+      {
+        "family": "payer_mismatch",
+        "title": "Payer mismatch",
+        "scenarios": 4,
+        "passed": 4
+      },
+      {
+        "family": "merchant_fault",
+        "title": "Merchant fault",
+        "scenarios": 11,
+        "passed": 11
+      },
+      {
+        "family": "injection",
+        "title": "Injection and hallucination",
+        "scenarios": 8,
+        "passed": 8
+      },
+      {
+        "family": "permissive",
+        "title": "Permissive or no-support merchant",
+        "scenarios": 6,
+        "passed": 6
+      },
+      {
+        "family": "consent_reuse",
+        "title": "Consent reuse",
+        "scenarios": 6,
+        "passed": 6
+      },
+      {
+        "family": "budget_stretch",
+        "title": "Budget stretch",
+        "scenarios": 6,
+        "passed": 6
+      }
+    ]
+  },
+  "verifier": {
+    "honest_warrants": {
+      "total": 41,
+      "accepted": 41,
+      "share": 1
+    },
+    "adversarial_warrants": {
+      "total": 46,
+      "flagged_by_the_rules": 46,
+      "refused_by_strict_merchants": 37,
+      "strict_merchant_cases": 37,
+      "sold_by_merchants_that_do_not_enforce": 9,
+      "non_enforcing_cases": 9,
+      "share_refused_by_strict_merchants": 1
+    },
+    "by_rule": {
+      "V01_SIGNATURE": {
+        "expected": 14,
+        "caught": 14,
+        "unexpected": 0,
+        "share_caught": 1
+      },
+      "V02_KEY_STATUS": {
+        "expected": 7,
+        "caught": 7,
+        "unexpected": 0,
+        "share_caught": 1
+      },
+      "V03_FRESHNESS": {
+        "expected": 6,
+        "caught": 6,
+        "unexpected": 0,
+        "share_caught": 1
+      },
+      "V04_AUDIENCE": {
+        "expected": 3,
+        "caught": 3,
+        "unexpected": 0,
+        "share_caught": 1
+      },
+      "V05_NONCE": {
+        "expected": 6,
+        "caught": 6,
+        "unexpected": 0,
+        "share_caught": 1
+      },
+      "V06_MANDATE_BINDING": {
+        "expected": 4,
+        "caught": 4,
+        "unexpected": 0,
+        "share_caught": 1
+      },
+      "V07_CART_HASH": {
+        "expected": 4,
+        "caught": 4,
+        "unexpected": 0,
+        "share_caught": 1
+      },
+      "V08_REPRICE": {
+        "expected": 4,
+        "caught": 4,
+        "unexpected": 0,
+        "share_caught": 1
+      },
+      "V09_SCOPE": {
+        "expected": 11,
+        "caught": 11,
+        "unexpected": 0,
+        "share_caught": 1
+      },
+      "V10_CONSENT": {
+        "expected": 9,
+        "caught": 9,
+        "unexpected": 0,
+        "share_caught": 1
+      }
+    }
+  },
+  "disputes": {
+    "total": 39,
+    "outcome_accuracy": 1,
+    "by_claim": {
+      "DUPLICATE": {
+        "total": 2,
+        "correct": 2,
+        "accuracy": 1
+      },
+      "NOT_AS_DESCRIBED": {
+        "total": 3,
+        "correct": 3,
+        "accuracy": 1
+      },
+      "NOT_RECEIVED": {
+        "total": 6,
+        "correct": 6,
+        "accuracy": 1
+      },
+      "OTHER": {
+        "total": 1,
+        "correct": 1,
+        "accuracy": 1
+      },
+      "UNAUTHORIZED": {
+        "total": 25,
+        "correct": 25,
+        "accuracy": 1
+      },
+      "WRONG_AMOUNT": {
+        "total": 2,
+        "correct": 2,
+        "accuracy": 1
+      }
+    },
+    "by_outcome": {
+      "ACCEPT": 1,
+      "ACCEPT_AGENT_FAULT": 5,
+      "ALREADY_RESOLVED": 1,
+      "ESCALATE_TO_HUMAN": 10,
+      "FIGHT": 12,
+      "NO_PROOF": 7,
+      "REFUND_MERCHANT_FAULT": 3
+    },
+    "routed_to_a_person": {
+      "count": 10,
+      "share": 0.2564
+    },
+    "proposed_action": {
+      "accept-claim": 8,
+      "alert": 10,
+      "make-offer": 3,
+      "none": 1,
+      "provide-evidence": 17
+    }
+  },
+  "evidence_notes": {
+    "drafts": 39,
+    "from_template": 37,
+    "model_drafts": 2,
+    "model_drafts_accepted_first_try": 1,
+    "model_drafts_rejected_for_invented_facts": 1,
+    "note": "Template notes are built from the case record, so they cannot contain a fact the record lacks. The model-draft counts come from the scenarios that plant a model that invents facts (inject-06) or sticks to the record (inject-07); run with ANTHROPIC_API_KEY for real-model numbers."
+  },
+  "ablation": {
+    "description": "The same disputes decided by the same outcome table, but with every fact derived from the signed warrant removed (F1-F8 and F10), so only what PayPal and the merchant already know (delivery, refunds, deadline, amount) is left. This shows what the proof adds; it is not a measurement of any language model.",
+    "disputes": 39,
+    "decisions_unchanged_without_the_warrant": 19,
+    "decisions_that_change": 20,
+    "contestable_cases_lost": {
+      "of": 12,
+      "lost": 11
+    },
+    "agent_platform_fault_attributions_lost": {
+      "of": 5,
+      "lost": 5
+    },
+    "moves": {
+      "ACCEPT -> ACCEPT": 1,
+      "ACCEPT_AGENT_FAULT -> NO_PROOF": 5,
+      "ALREADY_RESOLVED -> ALREADY_RESOLVED": 1,
+      "ESCALATE_TO_HUMAN -> ACCEPT": 1,
+      "ESCALATE_TO_HUMAN -> ESCALATE_TO_HUMAN": 6,
+      "ESCALATE_TO_HUMAN -> FIGHT": 1,
+      "ESCALATE_TO_HUMAN -> NO_PROOF": 2,
+      "FIGHT -> FIGHT": 1,
+      "FIGHT -> NO_PROOF": 9,
+      "FIGHT -> REFUND_MERCHANT_FAULT": 2,
+      "NO_PROOF -> NO_PROOF": 7,
+      "REFUND_MERCHANT_FAULT -> REFUND_MERCHANT_FAULT": 3
+    },
+    "detail": [
+      {
+        "id": "remorse-01",
+        "with_warrant": "FIGHT",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "remorse-02",
+        "with_warrant": "FIGHT",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "remorse-03",
+        "with_warrant": "FIGHT",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "remorse-04",
+        "with_warrant": "FIGHT",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "remorse-05",
+        "with_warrant": "NO_PROOF",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "remorse-06",
+        "with_warrant": "NO_PROOF",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "remorse-07",
+        "with_warrant": "ESCALATE_TO_HUMAN",
+        "without_warrant": "ESCALATE_TO_HUMAN"
+      },
+      {
+        "id": "remorse-08",
+        "with_warrant": "ESCALATE_TO_HUMAN",
+        "without_warrant": "ESCALATE_TO_HUMAN"
+      },
+      {
+        "id": "swap-04",
+        "with_warrant": "ACCEPT_AGENT_FAULT",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "swap-06",
+        "with_warrant": "NO_PROOF",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "swap-08",
+        "with_warrant": "ACCEPT_AGENT_FAULT",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "scope-09",
+        "with_warrant": "ACCEPT_AGENT_FAULT",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "forge-07",
+        "with_warrant": "NO_PROOF",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "payer-02",
+        "with_warrant": "NO_PROOF",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "fault-01",
+        "with_warrant": "REFUND_MERCHANT_FAULT",
+        "without_warrant": "REFUND_MERCHANT_FAULT"
+      },
+      {
+        "id": "fault-02",
+        "with_warrant": "REFUND_MERCHANT_FAULT",
+        "without_warrant": "REFUND_MERCHANT_FAULT"
+      },
+      {
+        "id": "fault-03",
+        "with_warrant": "FIGHT",
+        "without_warrant": "FIGHT"
+      },
+      {
+        "id": "fault-04",
+        "with_warrant": "ESCALATE_TO_HUMAN",
+        "without_warrant": "ESCALATE_TO_HUMAN"
+      },
+      {
+        "id": "fault-05",
+        "with_warrant": "FIGHT",
+        "without_warrant": "REFUND_MERCHANT_FAULT"
+      },
+      {
+        "id": "fault-06",
+        "with_warrant": "REFUND_MERCHANT_FAULT",
+        "without_warrant": "REFUND_MERCHANT_FAULT"
+      },
+      {
+        "id": "fault-07",
+        "with_warrant": "ACCEPT",
+        "without_warrant": "ACCEPT"
+      },
+      {
+        "id": "fault-08",
+        "with_warrant": "ESCALATE_TO_HUMAN",
+        "without_warrant": "ACCEPT"
+      },
+      {
+        "id": "fault-09",
+        "with_warrant": "ESCALATE_TO_HUMAN",
+        "without_warrant": "ESCALATE_TO_HUMAN"
+      },
+      {
+        "id": "fault-10",
+        "with_warrant": "ALREADY_RESOLVED",
+        "without_warrant": "ALREADY_RESOLVED"
+      },
+      {
+        "id": "fault-11",
+        "with_warrant": "ESCALATE_TO_HUMAN",
+        "without_warrant": "ESCALATE_TO_HUMAN"
+      },
+      {
+        "id": "inject-01",
+        "with_warrant": "FIGHT",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "inject-02",
+        "with_warrant": "ESCALATE_TO_HUMAN",
+        "without_warrant": "FIGHT"
+      },
+      {
+        "id": "inject-03",
+        "with_warrant": "ESCALATE_TO_HUMAN",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "inject-04",
+        "with_warrant": "ESCALATE_TO_HUMAN",
+        "without_warrant": "ESCALATE_TO_HUMAN"
+      },
+      {
+        "id": "inject-05",
+        "with_warrant": "FIGHT",
+        "without_warrant": "REFUND_MERCHANT_FAULT"
+      },
+      {
+        "id": "inject-06",
+        "with_warrant": "FIGHT",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "inject-07",
+        "with_warrant": "FIGHT",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "inject-08",
+        "with_warrant": "FIGHT",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "perm-01",
+        "with_warrant": "FIGHT",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "perm-02",
+        "with_warrant": "NO_PROOF",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "perm-03",
+        "with_warrant": "NO_PROOF",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "perm-04",
+        "with_warrant": "ESCALATE_TO_HUMAN",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "reuse-05",
+        "with_warrant": "ACCEPT_AGENT_FAULT",
+        "without_warrant": "NO_PROOF"
+      },
+      {
+        "id": "budget-06",
+        "with_warrant": "ACCEPT_AGENT_FAULT",
+        "without_warrant": "NO_PROOF"
+      }
+    ]
+  },
+  "latency": {
+    "samples": 39,
+    "median_ms": 18,
+    "p95_ms": 28,
+    "max_ms": 30
+  },
+  "failures": [],
+  "scenarios": [
+    {
+      "id": "remorse-01",
+      "family": "remorse",
+      "title": "Buyer denies an authorised, delivered purchase",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "FIGHT",
+      "rule": "UNAUTHORIZED_1_AUTHORISATION_CONFIRMED",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "remorse-02",
+      "family": "remorse",
+      "title": "Buyer denies a purchase that has shipped but not arrived",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "FIGHT",
+      "rule": "UNAUTHORIZED_1_AUTHORISATION_CONFIRMED",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "remorse-03",
+      "family": "remorse",
+      "title": "Buyer denies a purchase that never shipped",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "FIGHT",
+      "rule": "UNAUTHORIZED_1_AUTHORISATION_CONFIRMED",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "remorse-04",
+      "family": "remorse",
+      "title": "Buyer denies a purchase the agent made on its own, within a mandate",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "FIGHT",
+      "rule": "UNAUTHORIZED_1_AUTHORISATION_CONFIRMED",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "remorse-05",
+      "family": "remorse",
+      "title": "First-time buyer denies a delivered purchase",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "NO_PROOF",
+      "rule": "UNAUTHORIZED_4_NO_PROOF",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "remorse-06",
+      "family": "remorse",
+      "title": "First-time buyer denies an undelivered purchase",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "NO_PROOF",
+      "rule": "UNAUTHORIZED_4_NO_PROOF",
+      "action": "accept-claim"
+    },
+    {
+      "id": "remorse-07",
+      "family": "remorse",
+      "title": "A deadline under 24 hours goes to a person",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "ESCALATE_TO_HUMAN",
+      "rule": "ANY_F12_DEADLINE_SOON",
+      "action": "alert"
+    },
+    {
+      "id": "remorse-08",
+      "family": "remorse",
+      "title": "A dispute larger than the payment goes to a person",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "ESCALATE_TO_HUMAN",
+      "rule": "ANY_F13_AMOUNT_EXCEEDS_CAPTURE",
+      "action": "alert"
+    },
+    {
+      "id": "swap-01",
+      "family": "cart_swap",
+      "title": "Consent for one cart, a different cart signed",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE",
+        "V10_CONSENT"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "swap-02",
+      "family": "cart_swap",
+      "title": "Total edited after signing",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE",
+        "V07_CART_HASH",
+        "V08_REPRICE",
+        "V10_CONSENT"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "swap-03",
+      "family": "cart_swap",
+      "title": "Item price edited after signing",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE",
+        "V07_CART_HASH",
+        "V08_REPRICE",
+        "V10_CONSENT"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "swap-04",
+      "family": "cart_swap",
+      "title": "Swapped cart at a permissive merchant, then a dispute",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE",
+        "V10_CONSENT"
+      ],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "ACCEPT_AGENT_FAULT",
+      "rule": "UNAUTHORIZED_2_ORDER_DIFFERS_FROM_CONSENT",
+      "action": "accept-claim"
+    },
+    {
+      "id": "swap-05",
+      "family": "cart_swap",
+      "title": "Wrong cart refused for a mandate hash that is not the mandate",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V06_MANDATE_BINDING"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "swap-06",
+      "family": "cart_swap",
+      "title": "Swapped cart sold by a merchant with no warrant support",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "NO_PROOF",
+      "rule": "UNAUTHORIZED_4_NO_PROOF",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "swap-07",
+      "family": "cart_swap",
+      "title": "Swap for a cheaper item at a strict merchant",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE",
+        "V10_CONSENT"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "swap-08",
+      "family": "cart_swap",
+      "title": "Swapped cart paid at a permissive merchant, undelivered",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE",
+        "V10_CONSENT"
+      ],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "ACCEPT_AGENT_FAULT",
+      "rule": "UNAUTHORIZED_2_ORDER_DIFFERS_FROM_CONSENT",
+      "action": "accept-claim"
+    },
+    {
+      "id": "scope-01",
+      "family": "scope_stretch",
+      "title": "Cart total above the mandate",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V09_SCOPE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "scope-02",
+      "family": "scope_stretch",
+      "title": "Item price above the per-item limit",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V09_SCOPE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "scope-03",
+      "family": "scope_stretch",
+      "title": "More items than the mandate allows",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V09_SCOPE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "scope-04",
+      "family": "scope_stretch",
+      "title": "Category outside the mandate",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V09_SCOPE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "scope-05",
+      "family": "scope_stretch",
+      "title": "Merchant denied by the mandate",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V09_SCOPE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "scope-06",
+      "family": "scope_stretch",
+      "title": "Merchant not on the allow list",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V09_SCOPE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "scope-07",
+      "family": "scope_stretch",
+      "title": "Gift card bought under an office-furniture mandate",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V09_SCOPE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "scope-08",
+      "family": "scope_stretch",
+      "title": "A cart inside the mandate passes",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "scope-09",
+      "family": "scope_stretch",
+      "title": "Wrong-scope cart sold, then disputed",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V09_SCOPE"
+      ],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "ACCEPT_AGENT_FAULT",
+      "rule": "UNAUTHORIZED_3_OUTSIDE_MANDATE",
+      "action": "accept-claim"
+    },
+    {
+      "id": "forge-01",
+      "family": "forgery",
+      "title": "Signed with the wrong key",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "forge-02",
+      "family": "forgery",
+      "title": "Signed under an unknown key id",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE",
+        "V02_KEY_STATUS",
+        "V06_MANDATE_BINDING"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "forge-03",
+      "family": "forgery",
+      "title": "A consent the wallet never made",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE",
+        "V10_CONSENT"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "forge-04",
+      "family": "forgery",
+      "title": "No consent although the mandate needs one for each cart",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V10_CONSENT"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "forge-05",
+      "family": "forgery",
+      "title": "Mandate instruction rewritten",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE",
+        "V06_MANDATE_BINDING"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "forge-06",
+      "family": "forgery",
+      "title": "Total edited",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE",
+        "V07_CART_HASH",
+        "V08_REPRICE",
+        "V10_CONSENT"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "forge-07",
+      "family": "forgery",
+      "title": "Edited cart at a permissive merchant, then a dispute",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE",
+        "V07_CART_HASH",
+        "V08_REPRICE",
+        "V10_CONSENT"
+      ],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "NO_PROOF",
+      "rule": "UNAUTHORIZED_4_NO_PROOF",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "forge-08",
+      "family": "forgery",
+      "title": "Garbage instead of a bundle",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE",
+        "V02_KEY_STATUS",
+        "V03_FRESHNESS",
+        "V04_AUDIENCE",
+        "V05_NONCE",
+        "V06_MANDATE_BINDING",
+        "V07_CART_HASH",
+        "V08_REPRICE",
+        "V09_SCOPE",
+        "V10_CONSENT"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "replay-01",
+      "family": "replay_audience",
+      "title": "The same bundle sent twice",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V05_NONCE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "replay-02",
+      "family": "replay_audience",
+      "title": "A new cart with an old nonce",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V05_NONCE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "replay-03",
+      "family": "replay_audience",
+      "title": "A warrant for another merchant",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE",
+        "V04_AUDIENCE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "replay-04",
+      "family": "replay_audience",
+      "title": "Consent given for another merchant",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "replay-05",
+      "family": "replay_audience",
+      "title": "A within-mandate cart addressed to another merchant",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V04_AUDIENCE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "replay-06",
+      "family": "replay_audience",
+      "title": "Resubmitting at a permissive merchant is the same order",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V05_NONCE"
+      ],
+      "sold": true,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "key-01",
+      "family": "key_time",
+      "title": "Agent platform key revoked",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V02_KEY_STATUS"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "key-02",
+      "family": "key_time",
+      "title": "Wallet key suspended",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V02_KEY_STATUS"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "key-03",
+      "family": "key_time",
+      "title": "Mandate expired",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V02_KEY_STATUS",
+        "V03_FRESHNESS"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "key-04",
+      "family": "key_time",
+      "title": "Cart warrant expired",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V02_KEY_STATUS",
+        "V03_FRESHNESS"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "key-05",
+      "family": "key_time",
+      "title": "Cart warrant that claims to last an hour",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V03_FRESHNESS"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "key-06",
+      "family": "key_time",
+      "title": "A cart issued 30 seconds ahead is within the allowed skew",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "key-07",
+      "family": "key_time",
+      "title": "A cart issued five minutes ahead is not",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V03_FRESHNESS"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "payer-01",
+      "family": "payer_mismatch",
+      "title": "A different PayPal account pays",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "rejected",
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "payer-02",
+      "family": "payer_mismatch",
+      "title": "A different payer at a permissive merchant, then a dispute",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "NO_PROOF",
+      "rule": "UNAUTHORIZED_4_NO_PROOF",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "payer-03",
+      "family": "payer_mismatch",
+      "title": "First purchase links the payer",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "payer-04",
+      "family": "payer_mismatch",
+      "title": "The right payer pays",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "fault-01",
+      "family": "merchant_fault",
+      "title": "Never shipped, buyer says not received",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "NOT_RECEIVED",
+      "outcome": "REFUND_MERCHANT_FAULT",
+      "rule": "NOT_RECEIVED_2_NOT_DELIVERED",
+      "action": "make-offer"
+    },
+    {
+      "id": "fault-02",
+      "family": "merchant_fault",
+      "title": "Shipped but never delivered",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "NOT_RECEIVED",
+      "outcome": "REFUND_MERCHANT_FAULT",
+      "rule": "NOT_RECEIVED_2_NOT_DELIVERED",
+      "action": "make-offer"
+    },
+    {
+      "id": "fault-03",
+      "family": "merchant_fault",
+      "title": "Delivered on time, buyer says not received",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "NOT_RECEIVED",
+      "outcome": "FIGHT",
+      "rule": "NOT_RECEIVED_1_DELIVERED_ON_TIME",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "fault-04",
+      "family": "merchant_fault",
+      "title": "Delivered late, buyer says not received",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "NOT_RECEIVED",
+      "outcome": "ESCALATE_TO_HUMAN",
+      "rule": "NOT_RECEIVED_GAP",
+      "action": "alert"
+    },
+    {
+      "id": "fault-05",
+      "family": "merchant_fault",
+      "title": "Not as described, listing unchanged",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "NOT_AS_DESCRIBED",
+      "outcome": "FIGHT",
+      "rule": "NOT_AS_DESCRIBED_1_LISTING_MATCHES",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "fault-06",
+      "family": "merchant_fault",
+      "title": "Not as described, the listing was changed",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "NOT_AS_DESCRIBED",
+      "outcome": "REFUND_MERCHANT_FAULT",
+      "rule": "NOT_AS_DESCRIBED_2_LISTING_DIFFERS",
+      "action": "make-offer"
+    },
+    {
+      "id": "fault-07",
+      "family": "merchant_fault",
+      "title": "Charged more than the consented cart",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "WRONG_AMOUNT",
+      "outcome": "ACCEPT",
+      "rule": "WRONG_AMOUNT_1_ORDER_DIFFERS_FROM_CONSENT",
+      "action": "accept-claim"
+    },
+    {
+      "id": "fault-08",
+      "family": "merchant_fault",
+      "title": "Wrong amount claimed but the charge matches the consent",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "WRONG_AMOUNT",
+      "outcome": "ESCALATE_TO_HUMAN",
+      "rule": "WRONG_AMOUNT_GAP",
+      "action": "alert"
+    },
+    {
+      "id": "fault-09",
+      "family": "merchant_fault",
+      "title": "A duplicate-charge claim",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "DUPLICATE",
+      "outcome": "ESCALATE_TO_HUMAN",
+      "rule": "DUPLICATE_NO_ROW",
+      "action": "alert"
+    },
+    {
+      "id": "fault-10",
+      "family": "merchant_fault",
+      "title": "Already refunded",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "NOT_RECEIVED",
+      "outcome": "ALREADY_RESOLVED",
+      "rule": "ANY_F11_ALREADY_REFUNDED",
+      "action": "none"
+    },
+    {
+      "id": "fault-11",
+      "family": "merchant_fault",
+      "title": "A reason the table does not cover",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "OTHER",
+      "outcome": "ESCALATE_TO_HUMAN",
+      "rule": "OTHER_NO_ROW",
+      "action": "alert"
+    },
+    {
+      "id": "inject-01",
+      "family": "injection",
+      "title": "The buyer's message tells the agent to refund",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "FIGHT",
+      "rule": "UNAUTHORIZED_1_AUTHORISATION_CONFIRMED",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "inject-02",
+      "family": "injection",
+      "title": "The message tries to rewrite the claim type",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "NOT_RECEIVED",
+      "outcome": "ESCALATE_TO_HUMAN",
+      "rule": "CLAIM_CONFLICT",
+      "action": "alert"
+    },
+    {
+      "id": "inject-03",
+      "family": "injection",
+      "title": "A message that contradicts the reason code",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "ESCALATE_TO_HUMAN",
+      "rule": "CLAIM_CONFLICT",
+      "action": "alert"
+    },
+    {
+      "id": "inject-04",
+      "family": "injection",
+      "title": "A reason of OTHER read from the message",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "DUPLICATE",
+      "outcome": "ESCALATE_TO_HUMAN",
+      "rule": "DUPLICATE_NO_ROW",
+      "action": "alert"
+    },
+    {
+      "id": "inject-05",
+      "family": "injection",
+      "title": "A hostile product listing is just a product",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "NOT_AS_DESCRIBED",
+      "outcome": "FIGHT",
+      "rule": "NOT_AS_DESCRIBED_1_LISTING_MATCHES",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "inject-06",
+      "family": "injection",
+      "title": "A model that invents facts in the notes",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "FIGHT",
+      "rule": "UNAUTHORIZED_1_AUTHORISATION_CONFIRMED",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "inject-07",
+      "family": "injection",
+      "title": "A model that sticks to the record",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "FIGHT",
+      "rule": "UNAUTHORIZED_1_AUTHORISATION_CONFIRMED",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "inject-08",
+      "family": "injection",
+      "title": "Markup and a very long message",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "FIGHT",
+      "rule": "UNAUTHORIZED_1_AUTHORISATION_CONFIRMED",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "perm-01",
+      "family": "permissive",
+      "title": "Permissive merchant, honest purchase, later denied",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "FIGHT",
+      "rule": "UNAUTHORIZED_1_AUTHORISATION_CONFIRMED",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "perm-02",
+      "family": "permissive",
+      "title": "No-support merchant, delivered, later denied",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "NO_PROOF",
+      "rule": "UNAUTHORIZED_4_NO_PROOF",
+      "action": "provide-evidence"
+    },
+    {
+      "id": "perm-03",
+      "family": "permissive",
+      "title": "No-support merchant, undelivered, later denied",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "NO_PROOF",
+      "rule": "UNAUTHORIZED_4_NO_PROOF",
+      "action": "accept-claim"
+    },
+    {
+      "id": "perm-04",
+      "family": "permissive",
+      "title": "Permissive merchant, nonce reused, later denied",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V05_NONCE"
+      ],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "ESCALATE_TO_HUMAN",
+      "rule": "UNAUTHORIZED_GAP",
+      "action": "alert"
+    },
+    {
+      "id": "perm-05",
+      "family": "permissive",
+      "title": "No-support merchant takes any bundle",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "perm-06",
+      "family": "permissive",
+      "title": "Permissive merchant, expired cart sold",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V02_KEY_STATUS",
+        "V03_FRESHNESS"
+      ],
+      "sold": true,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "reuse-01",
+      "family": "consent_reuse",
+      "title": "An identical cart under a fresh id reuses the consent",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE",
+        "V10_CONSENT"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "reuse-02",
+      "family": "consent_reuse",
+      "title": "Consent presented to another merchant",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "reuse-03",
+      "family": "consent_reuse",
+      "title": "A consented cart submitted twice",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V05_NONCE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "reuse-04",
+      "family": "consent_reuse",
+      "title": "A second approved cart with the first one's nonce",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V05_NONCE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "reuse-05",
+      "family": "consent_reuse",
+      "title": "Consent reuse sold by a permissive merchant, then disputed",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V01_SIGNATURE",
+        "V10_CONSENT"
+      ],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "ACCEPT_AGENT_FAULT",
+      "rule": "UNAUTHORIZED_2_ORDER_DIFFERS_FROM_CONSENT",
+      "action": "accept-claim"
+    },
+    {
+      "id": "reuse-06",
+      "family": "consent_reuse",
+      "title": "Consent reuse at a no-support merchant",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "budget-01",
+      "family": "budget_stretch",
+      "title": "Two carts that each fit but together exceed the budget",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V09_SCOPE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "budget-02",
+      "family": "budget_stretch",
+      "title": "A second cart that still fits",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "budget-03",
+      "family": "budget_stretch",
+      "title": "Item count across carts",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V09_SCOPE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "budget-04",
+      "family": "budget_stretch",
+      "title": "A per-cart mandate does not accumulate",
+      "passed": true,
+      "verifier": "ACCEPT",
+      "rejected_rules": [],
+      "sold": true,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "budget-05",
+      "family": "budget_stretch",
+      "title": "The third cart breaks the budget",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V09_SCOPE"
+      ],
+      "sold": false,
+      "payment": null,
+      "claim": null,
+      "outcome": null,
+      "rule": null,
+      "action": null
+    },
+    {
+      "id": "budget-06",
+      "family": "budget_stretch",
+      "title": "Over-budget cart sold by a permissive merchant, then disputed",
+      "passed": true,
+      "verifier": "REJECT",
+      "rejected_rules": [
+        "V09_SCOPE"
+      ],
+      "sold": true,
+      "payment": "captured",
+      "claim": "UNAUTHORIZED",
+      "outcome": "ACCEPT_AGENT_FAULT",
+      "rule": "UNAUTHORIZED_3_OUTSIDE_MANDATE",
+      "action": "accept-claim"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "@warrant/server",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Fastify API: wallet, registry, merchant verifier, dispute agent, console and Dispute Lab",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./api-types": "./src/api-types.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --coverage",
+    "dev": "tsx watch src/main.ts",
+    "start": "tsx src/main.ts",
+    "db:migrate": "tsx src/migrate.ts",
+    "paypal:doctor": "tsx src/doctor.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.135.0",
+    "@electric-sql/pglite": "^0.5.10",
+    "@fastify/cors": "^11.3.1",
+    "@fastify/static": "^10.1.6",
+    "@paypal/agent-toolkit": "1.11.0",
+    "@warrant/catalog": "workspace:^",
+    "@warrant/paypal": "workspace:^",
+    "@warrant/warrant": "workspace:^",
+    "fastify": "^5.12.7",
+    "pg": "^8.23.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite-socket": "^0.2.13",
+    "@types/pg": "^8.23.1",
+    "@vitest/coverage-v8": "^5.0.5",
+    "esbuild": "^0.28.2",
+    "tsx": "^4.23.15",
+    "vitest": "^5.0.5"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@warrant/sim",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Labelled dispute-scenario corpus runner: pnpm eval writes sim/report.json",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "eval": "tsx src/eval.ts",
+    "test": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@warrant/server": "workspace:^",
+    "@warrant/warrant": "workspace:^"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^5.0.5",
+    "tsx": "^4.23.15",
+    "vitest": "^5.0.5"
+  }
+}

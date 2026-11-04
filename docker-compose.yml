@@ -1,0 +1,59 @@
+# Local Postgres for development, and optionally the whole product in a container.
+#
+#   docker compose up -d db          Postgres on localhost:5432 (matches DATABASE_URL in .env.example)
+#   docker compose --profile app up  the full image on http://localhost:8787, against that Postgres
+#
+# Without Postgres the server uses an embedded database and needs nothing from this file.
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: warrant
+      POSTGRES_PASSWORD: warrant
+      POSTGRES_DB: warrant
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - warrant-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U warrant -d warrant"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  app:
+    profiles: ["app"]
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8787:8787"
+    volumes:
+      # Development signing keys live here when the three *_KEY variables are not set.
+      - warrant-data:/root/.local/share/warrant
+    environment:
+      # The image defaults to production, which insists on real signing keys. Set NODE_ENV=production and the keys in
+      # .env to run it that way; the default here is the local demo.
+      NODE_ENV: ${NODE_ENV:-development}
+      DATABASE_URL: postgres://warrant:warrant@db:5432/warrant
+      PUBLIC_BASE_URL: http://localhost:8787
+      WEB_ORIGIN: http://localhost:8787
+      WARRANT_MODE: ${WARRANT_MODE:-fixtures}
+      PAYPAL_ENV: ${PAYPAL_ENV:-simulator}
+      PAYPAL_CLIENT_ID: ${PAYPAL_CLIENT_ID:-}
+      PAYPAL_CLIENT_SECRET: ${PAYPAL_CLIENT_SECRET:-}
+      PAYPAL_WEBHOOK_ID: ${PAYPAL_WEBHOOK_ID:-}
+      PAYPAL_MERCHANT_ID: ${PAYPAL_MERCHANT_ID:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      CHANNEL3_API_KEY: ${CHANNEL3_API_KEY:-}
+      WALLET_SIGNING_KEY: ${WALLET_SIGNING_KEY:-}
+      AGENT_PLATFORM_SIGNING_KEY: ${AGENT_PLATFORM_SIGNING_KEY:-}
+      REGISTRY_LOG_KEY: ${REGISTRY_LOG_KEY:-}
+      JUDGE_MODE_ENABLED: ${JUDGE_MODE_ENABLED:-true}
+      CONSOLE_TOKEN: ${CONSOLE_TOKEN:-}
+
+volumes:
+  warrant-db:
+  warrant-data:

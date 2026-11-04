@@ -1,0 +1,35 @@
+{
+  "name": "@warrant/web",
+  "version": "0.0.0",
+  "private": true,
+  "description": "React + Vite app: Shopper, public Verify page, Merchant Console (AG Studio), Dispute Lab",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --coverage"
+  },
+  "dependencies": {
+    "ag-studio": "^3.0.0",
+    "ag-studio-react": "^3.0.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.8",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "@vitest/coverage-v8": "^5.0.5",
+    "@warrant/server": "workspace:^",
+    "jsdom": "^30.1.3",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  }
+}
