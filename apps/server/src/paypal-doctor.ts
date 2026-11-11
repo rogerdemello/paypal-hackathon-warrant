@@ -113,7 +113,7 @@ export async function runPayPalDoctor(options: DoctorOptions): Promise<DoctorChe
   else add({ name: 'Merchant id', ok: true, detail: `set (${options.merchantId}); it must be the merchant id of the sandbox business account that receives the payments` });
 
   if (options.environment === 'sandbox' && isLocal(options.publicBaseUrl)) {
-    add({ name: 'Public address', ok: false, optional: true, detail: `PUBLIC_BASE_URL is ${options.publicBaseUrl}; PayPal cannot deliver webhooks to your own computer. Use a tunnel (docs/setup.md); until then the app polls PayPal instead.` });
+    add({ name: 'Public address', ok: false, optional: true, detail: `PUBLIC_BASE_URL is ${options.publicBaseUrl}; PayPal cannot deliver webhooks to your own computer. Use a tunnel (docs/setup.md); until then orders finish when the buyer returns to the shop, and the console's "Refresh from PayPal" re-reads a dispute.` });
   }
   return checks;
 }
