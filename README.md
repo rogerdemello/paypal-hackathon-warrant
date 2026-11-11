@@ -10,7 +10,7 @@
 
 | | |
 |---|---|
-| **Hosted demo** | `<HOSTED_DEMO_URL>`: not deployed yet. The Dockerfile and `render.yaml` are ready ([docs/setup.md](docs/setup.md#deploying-to-render)) |
+| **Hosted demo** | https://warrant-paypal.onrender.com (free Render instance: the first load after idle takes about a minute). It runs the built-in PayPal simulator, not the real sandbox. No sign-up; the console and Dispute Lab are open |
 | **Demo video (under 3 min)** | `<YOUTUBE_URL>`: not recorded yet |
 | **Run it now** | `pnpm install && pnpm dev`, then http://localhost:5173. No accounts or keys |
 | **Sandbox test logins** | See [docs/setup.md](docs/setup.md#judge-test-accounts) |
@@ -114,10 +114,10 @@ Status values: Planned, In progress, Working, Cut.
 
 ### Option A: hosted demo
 
-Once it is deployed:
+https://warrant-paypal.onrender.com runs the built-in PayPal simulator, so no PayPal login is needed. The first load after idle takes about a minute.
 
-1. Open `<HOSTED_DEMO_URL>` and click **Judge Mode**.
-2. In **Shopper**, ask: *"Find a standing desk converter under $120."* Approve the consent screen, then approve the order in PayPal with the sandbox buyer from [docs/setup.md](docs/setup.md#judge-test-accounts).
+1. Open it. There is no sign-up; the console and Dispute Lab are open.
+2. In **Shop**, click *"A standing desk converter under $120"*. Press **Link the sandbox buyer now** first for the strongest proof. Sign the permission request, approve the cart, then **Approve payment** on the simulator's page.
 3. Open the warrant's **Verify** page to check the proof.
 4. Open **Dispute Lab**, pick a scenario (for example *Cart swap*), and run it. Watch the facts, the proposed action and the liability memo. Approve the action.
 
