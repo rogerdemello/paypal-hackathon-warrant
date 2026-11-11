@@ -122,7 +122,7 @@ export class ShoppingAgent {
 
   /** The newest session of a principal, if any (so a reload keeps the conversation). */
   async latestSession(principalId: string): Promise<AgentSessionDto | null> {
-    const row = maybeOne(await this.o.db.query<{ id: string }>('SELECT id FROM agent_sessions WHERE principal_id = $1 ORDER BY created_at DESC, id DESC LIMIT 1', [principalId]));
+    const row = maybeOne(await this.o.db.query<{ id: string }>('SELECT id FROM agent_sessions WHERE principal_id = $1 ORDER BY updated_at DESC, created_at DESC, id DESC LIMIT 1', [principalId]));
     return row === null ? null : this.getSession(row.id, principalId);
   }
 

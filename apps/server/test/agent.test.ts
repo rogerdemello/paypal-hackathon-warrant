@@ -89,6 +89,16 @@ describe('a whole purchase through the agent', () => {
     const other = await shop.wallet.ensurePrincipal('visitor-0000002');
     expect(await shop.shopper.latestSession(other.id)).toBeNull();
   });
+
+  it('resumes the conversation in use, not an empty one started later (a page that opens two at once)', async () => {
+    const { principal, session } = await begin();
+    const extra = await shop.shopper.startSession(principal.id);
+    shop.clock.advanceSeconds(5);
+    await shop.shopper.sendMessage(session.id, principal.id, 'a book about ergonomics under $30');
+    const latest = await shop.shopper.latestSession(principal.id);
+    expect(latest?.id).toBe(session.id);
+    expect(latest?.id).not.toBe(extra.id);
+  });
 });
 
 describe('understanding the request', () => {
