@@ -14,7 +14,9 @@
     "dev": "tsx watch src/main.ts",
     "start": "tsx src/main.ts",
     "db:migrate": "tsx src/migrate.ts",
-    "paypal:doctor": "tsx src/doctor.ts"
+    "paypal:doctor": "tsx src/doctor.ts",
+    "build": "node build.mjs",
+    "start:prod": "node dist/main.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.135.0",

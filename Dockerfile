@@ -31,15 +31,18 @@ RUN pnpm install --frozen-lockfile --filter "@warrant/server..." --filter "@warr
 
 COPY apps apps
 COPY packages packages
-RUN pnpm --filter @warrant/web run build
+RUN pnpm --filter @warrant/web run build && pnpm --filter @warrant/server run build
 
 ENV NODE_ENV=production
 ENV PORT=8787
 ENV HOST=0.0.0.0
+# A bounded heap keeps the process inside small instances (the embedded database lives outside it).
+ENV NODE_OPTIONS=--max-old-space-size=384
 EXPOSE 8787
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
   CMD node -e "fetch('http://127.0.0.1:'+(process.env.PORT||8787)+'/api/health').then(r=>process.exit(r.ok?0:1),()=>process.exit(1))"
 
-# The server runs TypeScript directly (tsx), from apps/server, and serves ../web/dist.
-CMD ["pnpm", "--filter", "@warrant/server", "start"]
+# The server is bundled to plain JavaScript at build time (apps/server/build.mjs) and runs from apps/server, serving ../web/dist.
+WORKDIR /app/apps/server
+CMD ["node", "dist/main.js"]
