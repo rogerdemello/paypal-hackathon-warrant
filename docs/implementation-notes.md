@@ -379,7 +379,8 @@ The library was finished first; `apps/server`, `apps/web`, `packages/paypal`, `p
 | Passkey signing, Log in with PayPal, AP2 and Verifiable Intent adapters | Not built (P2) |
 | Spec gaps G4, G7, G8, G9, G11 | Still open (section 2) |
 | MCP | `@warrant/mcp` has two read-only tools, `verify_warrant` and `get_dispute_facts`, taking only identifiers |
-| Hosted demo, demo video | Not produced here. The Dockerfile and `docker-compose.yml` were checked by building the image and running it, with Postgres, in production mode; `render.yaml` was not applied to Render |
+| Hosted demo | https://warrant-paypal.onrender.com, on Render's free plans, running the simulator in fixtures mode with production settings and a Postgres database; the 11 browser tests pass against it. Two limits: the free database **expires on 2026-12-11** (upgrade it before judging ends on Dec 15), and the free web instance sleeps when idle. It was created through the Render API rather than `render.yaml`. The image runs a bundled build (`apps/server/build.mjs`), because TypeScript at startup plus the embedded database exceeded the free plan's 512 MB (the embedded database alone does too; with Postgres the container uses about 120 MB) |
+| Demo video | Not recorded |
 
 ### 6.5 Simulator state
 
