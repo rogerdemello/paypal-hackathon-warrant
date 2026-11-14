@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import type { AgentPart, AgentSessionDto, MandateDto, MandateTermsDto, ProductDto, ProposalDto, WalletMeDto } from '@warrant/server/api-types';
 import { ApiError, api } from '../api';
 import { ProposalView, MandateRequest, ConsentScreen } from '../components/Consent';
-import { Badge, Card, Empty, ErrorNote, Findings, Spinner, StatusBadge } from '../components/ui';
+import { Badge, Card, Empty, ErrorNote, Findings, Spinner, StatusBadge, Stepper } from '../components/ui';
 import { useConfig } from '../config';
 import { dateTime, money, moneyText } from '../format';
 import { useAction, useLoad, type Loaded } from '../hooks';
@@ -51,7 +51,8 @@ export function Shopper() {
   }, [adopt]);
 
   useEffect(() => {
-    bottom.current?.scrollIntoView?.({ behavior: 'smooth', block: 'end' });
+    // Follow the conversation once it has started; on first load the page stays at the top.
+    if ((session?.messages.length ?? 0) > 1) bottom.current?.scrollIntoView?.({ behavior: 'smooth', block: 'end' });
   }, [session?.messages.length, booting]);
 
   const step = useCallback(
@@ -89,17 +90,18 @@ export function Shopper() {
     <div className="page">
       <div className="cols">
         <div>
-          <div className="card-head">
-            <div>
-              <h1>Shop with an AI agent, safely</h1>
-              <p className="muted" style={{ margin: 0 }}>
-                Tell the agent what you want. It can look and propose, but nothing is bought until your wallet signs your approval, and the merchant checks that signature.
-              </p>
+          <div className="hero">
+            <div className="row" style={{ justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'nowrap', gap: 16 }}>
+              <div>
+                <h1>Shop with an AI agent, safely</h1>
+                <p>Tell the agent what you want. It can look and propose, but nothing is bought until your wallet signs your approval, and the merchant checks that signature.</p>
+              </div>
+              <button className="small" onClick={() => void fresh.run()} disabled={fresh.busy}>
+                New conversation
+              </button>
             </div>
-            <button className="small" onClick={() => void fresh.run()} disabled={fresh.busy}>
-              New conversation
-            </button>
           </div>
+          <Stepper stage={session?.stage ?? 'start'} />
 
           <div className="chat" style={{ marginTop: 16 }} aria-live="polite">
             {messages.map((m) => (

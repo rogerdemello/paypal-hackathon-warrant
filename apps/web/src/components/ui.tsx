@@ -129,6 +129,24 @@ export function Tabs<T extends string>({ tabs, value, onChange }: { tabs: Readon
   );
 }
 
+const STEPS = ['Ask', 'Permission', 'Approve', 'Pay', 'Proof'] as const;
+const STAGE_STEP: Readonly<Record<string, number>> = { start: 0, awaiting_mandate: 1, awaiting_consent: 2, checking_out: 3, done: STEPS.length };
+
+/** Where the shopper is in a purchase: ask, sign the mandate, approve the cart, pay, then the public proof. */
+export function Stepper({ stage }: { stage: string }) {
+  const at = STAGE_STEP[stage] ?? 0;
+  return (
+    <ol className="stepper" aria-label="Progress of this purchase">
+      {STEPS.map((label, i) => (
+        <li key={label} className={`step ${i < at ? 'done' : i === at ? 'current' : ''}`} aria-current={i === at ? 'step' : undefined}>
+          <span className="dot" aria-hidden="true">{i < at ? '✓' : i + 1}</span>
+          {label}
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 export function Json({ value }: { value: unknown }) {
   return <pre>{JSON.stringify(value, null, 2)}</pre>;
 }

@@ -28,3 +28,7 @@ A banner says when PayPal is the built-in simulator. The console asks for a toke
 ## AG Studio
 
 `ag-studio` and `ag-studio-react` are pinned to the same version. Local development needs no licence key; a production build shows a watermark without one (`VITE_AG_STUDIO_LICENCE_KEY`, embedded in the client bundle, is not a secret). The Analytics page opens AG Studio in edit mode over three data sources. There is no pre-built dashboard, custom widget or Studio agent yet.
+
+## Design
+
+One stylesheet (`src/styles.css`) holds the design system: PayPal-blue palette tokens, rounded cards and pill buttons, a light theme by default and a dark one (`data-theme="dark"`, chosen with the button in the header, remembered per browser and applied before first paint by a small script in `index.html`). The shop has a five-step progress bar (Ask, Permission, Approve, Pay, Proof) driven by the conversation's stage; the console has a left sidebar that turns into a scrolling row on narrow screens. The server lists static files when it starts, so restart it after rebuilding the web app.

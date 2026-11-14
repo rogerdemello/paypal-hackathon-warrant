@@ -5,6 +5,7 @@ import { CheckoutCancelled, CheckoutReturn } from './pages/CheckoutReturn';
 import { Lab } from './pages/Lab';
 import { Shopper } from './pages/Shopper';
 import { Verify } from './pages/Verify';
+import { useTheme } from './theme';
 
 export function App() {
   return (
@@ -16,6 +17,7 @@ export function App() {
 
 function Shell() {
   const config = useConfig();
+  const [theme, toggleTheme] = useTheme();
   return (
     <div className="shell">
       {config.paypalEnv === 'simulator' && (
@@ -38,7 +40,10 @@ function Shell() {
           <NavLink to="/lab">Dispute Lab</NavLink>
         </nav>
         <span className="spacer" />
-        <span className="muted small">{config.merchantName}</span>
+        <span className="merchant-chip">{config.merchantName}</span>
+        <button className="icon-btn" onClick={toggleTheme} aria-label={theme === 'dark' ? 'Switch to the light theme' : 'Switch to the dark theme'} title={theme === 'dark' ? 'Light theme' : 'Dark theme'}>
+          {theme === 'dark' ? '☀' : '☾'}
+        </button>
       </header>
       <main>
         <Routes>
@@ -51,6 +56,10 @@ function Shell() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
+      <footer className="site-footer">
+        <span>Warrant: signed proof of what a person authorised an AI agent to buy. Sandbox only; no real money moves.</span>
+        <span>{config.paypalEnv === 'simulator' ? 'PayPal: built-in simulator' : 'PayPal: sandbox'}</span>
+      </footer>
     </div>
   );
 }

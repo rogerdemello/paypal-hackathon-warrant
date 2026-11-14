@@ -32,34 +32,36 @@ export function Console() {
   const needAttention = probe.data.disputes.needAttention;
   return (
     <div className="page">
-      <div className="card-head">
-        <div>
-          <h1>Merchant console</h1>
-          <p className="muted" style={{ margin: 0 }}>
-            {config.merchantName}. Orders, rejected checkouts, disputes and the keys behind every signature.
-          </p>
-        </div>
-        <label className="check small">
-          <input
-            type="checkbox"
-            checked={showLab}
-            onChange={(e) => {
-              writeStored('warrant.showLab', e.target.checked ? '1' : null);
-              setShowLab(e.target.checked);
-            }}
-          />
-          Include Dispute Lab runs
-        </label>
+      <div className="page-head">
+        <h1>Merchant console</h1>
+        <p>
+          {config.merchantName}. Orders, rejected checkouts, disputes and the keys behind every signature.
+        </p>
       </div>
-      <nav className="tabs" aria-label="Console sections">
-        <NavLink to="/console" end>Overview</NavLink>
-        <NavLink to="/console/orders">Orders</NavLink>
-        <NavLink to="/console/disputes">Disputes{needAttention > 0 ? ` (${needAttention})` : ''}</NavLink>
-        <NavLink to="/console/checkouts">Checkouts</NavLink>
-        <NavLink to="/console/catalog">Catalog</NavLink>
-        <NavLink to="/console/registry">Registry</NavLink>
-        <NavLink to="/console/studio">Analytics</NavLink>
-      </nav>
+      <div className="console-layout">
+        <nav className="side-nav" aria-label="Console sections">
+          <div className="side-title">Console</div>
+          <NavLink to="/console" end>Overview</NavLink>
+          <NavLink to="/console/orders">Orders</NavLink>
+          <NavLink to="/console/disputes">Disputes{needAttention > 0 ? ` (${needAttention})` : ''}</NavLink>
+          <NavLink to="/console/checkouts">Checkouts</NavLink>
+          <NavLink to="/console/catalog">Catalog</NavLink>
+          <NavLink to="/console/registry">Registry</NavLink>
+          <NavLink to="/console/studio">Analytics</NavLink>
+          <hr />
+          <label className="check small" style={{ padding: '4px 12px 8px' }}>
+            <input
+              type="checkbox"
+              checked={showLab}
+              onChange={(e) => {
+                writeStored('warrant.showLab', e.target.checked ? '1' : null);
+                setShowLab(e.target.checked);
+              }}
+            />
+            Include Dispute Lab runs
+          </label>
+        </nav>
+        <div className="console-main">
       <ShowLabContext.Provider value={showLab}>
       <Routes>
         <Route index element={<Overview />} />
@@ -81,6 +83,8 @@ export function Console() {
         <Route path="*" element={<Navigate to="/console" replace />} />
       </Routes>
       </ShowLabContext.Provider>
+        </div>
+      </div>
     </div>
   );
 }
