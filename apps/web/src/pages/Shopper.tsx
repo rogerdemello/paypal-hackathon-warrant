@@ -90,16 +90,14 @@ export function Shopper() {
     <div className="page">
       <div className="cols">
         <div>
-          <div className="hero">
-            <div className="row" style={{ justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'nowrap', gap: 16 }}>
-              <div>
-                <h1>Shop with an AI agent, safely</h1>
-                <p>Tell the agent what you want. It can look and propose, but nothing is bought until your wallet signs your approval, and the merchant checks that signature.</p>
-              </div>
-              <button className="small" onClick={() => void fresh.run()} disabled={fresh.busy}>
-                New conversation
-              </button>
+          <div className="shop-head">
+            <div>
+              <h1>Shop with an AI agent, safely</h1>
+              <p>Tell the agent what you want. It can look and propose, but nothing is bought until your wallet signs your approval, and the merchant checks that signature.</p>
             </div>
+            <button className="small" onClick={() => void fresh.run()} disabled={fresh.busy}>
+              New conversation
+            </button>
           </div>
           <Stepper stage={session?.stage ?? 'start'} />
 

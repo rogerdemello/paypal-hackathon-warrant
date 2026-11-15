@@ -118,7 +118,7 @@ export function MandateRequest({ terms, suggestedCategories, resolved, payerLink
           </select>
         </label>
         <div>
-          <div className="muted small">Kinds of product</div>
+          <div className="field-label">Kinds of product</div>
           <div className="row" style={{ marginTop: 4 }}>
             {suggestedCategories.map((c) => (
               <label key={c} className="check">
