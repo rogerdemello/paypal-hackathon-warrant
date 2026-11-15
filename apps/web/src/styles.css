@@ -1195,3 +1195,193 @@ dl.facts dd {
     box-shadow: inset 0 -2px 0 var(--text);
   }
 }
+
+/* ---- the Dispute Lab: a case list ---------------------------------------------------------------------- */
+
+.lab-toolbar {
+  position: sticky;
+  top: 64px;
+  z-index: 5;
+  margin-bottom: 14px;
+  background: var(--surface);
+  border-color: var(--line-strong);
+}
+.lab-toolbar > .card-head:first-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.lab-toolbar .note {
+  margin-top: 12px;
+}
+.scenarios {
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.scenario {
+  position: relative;
+  padding: 16px 22px 18px 26px;
+  border-bottom: 1px solid var(--line);
+}
+.scenario:last-child {
+  border-bottom: 0;
+}
+.scenario::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: transparent;
+}
+.scenario.passed::before {
+  background: var(--good);
+}
+.scenario.failed::before {
+  background: var(--bad);
+}
+.scenario .card-head {
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+.scenario .card-head .muted.small {
+  font: 500 0.68rem/1.4 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.scenario h3 {
+  font-size: 1.05rem;
+  margin: 3px 0 0;
+}
+.scenario > p {
+  max-width: 72ch;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+.scenario .timeline {
+  columns: 2;
+  column-gap: 40px;
+}
+.scenario .timeline li {
+  break-inside: avoid;
+}
+@media (max-width: 900px) {
+  .scenario .timeline {
+    columns: 1;
+  }
+  .lab-toolbar {
+    position: static;
+  }
+}
+
+/* ---- a dispute: queue rail, fact ledger, ruling ---------------------------------------------------------- */
+
+.split.has-detail {
+  grid-template-columns: 330px minmax(0, 1fr);
+  gap: 28px;
+}
+.split.has-detail .queue {
+  position: sticky;
+  top: 80px;
+  padding: 16px 14px;
+}
+.split.has-detail .queue th:nth-child(2),
+.split.has-detail .queue td:nth-child(2),
+.split.has-detail .queue th:nth-child(3),
+.split.has-detail .queue td:nth-child(3),
+.split.has-detail .queue th:nth-child(5),
+.split.has-detail .queue td:nth-child(5),
+.split.has-detail .queue th:nth-child(6),
+.split.has-detail .queue td:nth-child(6) {
+  display: none;
+}
+.split.has-detail .queue .card-head {
+  gap: 8px;
+}
+.split.has-detail .queue .card-head select {
+  max-width: 130px;
+}
+@media (max-width: 1000px) {
+  .split.has-detail {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .split.has-detail .queue {
+    position: static;
+  }
+}
+
+.fact-list details {
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 8px 0;
+  background: none;
+}
+.fact-list details + details {
+  margin-top: 0;
+}
+.fact-list details:last-child {
+  border-bottom: 0;
+}
+.fact-list summary {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-weight: 500;
+  list-style: none;
+}
+.fact-list summary::-webkit-details-marker {
+  display: none;
+}
+.fact-list summary::after {
+  content: '+';
+  margin-left: 8px;
+  color: var(--muted);
+  font: 500 0.9rem/1 var(--mono);
+  order: 3;
+}
+.fact-list details[open] summary::after {
+  content: '\2212';
+}
+.fact-list details[open] > summary {
+  margin-bottom: 6px;
+}
+.fact-mark {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 2px;
+  font: 600 0.72rem/1 var(--mono);
+  align-self: center;
+}
+.fact-mark.ok {
+  background: var(--good-soft);
+  color: var(--good);
+}
+.fact-mark.no {
+  background: var(--bad-soft);
+  color: var(--bad);
+}
+.fact-mark.num {
+  background: var(--surface-3);
+  color: var(--muted);
+}
+.fact-id {
+  margin-left: auto;
+  font: 500 0.7rem/1 var(--mono);
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  order: 2;
+}
+
+.ruling {
+  padding-bottom: 12px;
+  margin-bottom: 4px;
+  border-bottom: 3px double var(--text);
+}
+.ruling .badge {
+  font-size: 0.9rem;
+  padding: 3px 12px 3px 10px;
+}

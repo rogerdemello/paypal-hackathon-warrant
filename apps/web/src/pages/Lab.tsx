@@ -66,6 +66,7 @@ function Scenarios() {
     <div className="stack">
       {!list.data.simulator && <div className="note warn">This server talks to the real PayPal sandbox, so scenarios that need a simulated buyer or dispute desk cannot run here. Checkout-only scenarios still can.</div>}
       <Card
+        className="lab-toolbar"
         title="Choose scenarios"
         actions={
           <div className="row">
@@ -90,9 +91,11 @@ function Scenarios() {
         )}
         <ErrorNote error={batch.error} />
       </Card>
-      {shown.map((s) => (
-        <ScenarioCard key={s.id} scenario={s} result={results[s.id]} running={running === s.id} disabled={running !== null} onRun={() => void runOne(s.id)} />
-      ))}
+      <div className="scenarios">
+        {shown.map((s) => (
+          <ScenarioCard key={s.id} scenario={s} result={results[s.id]} running={running === s.id} disabled={running !== null} onRun={() => void runOne(s.id)} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -100,7 +103,7 @@ function Scenarios() {
 function ScenarioCard({ scenario, result, running, disabled, onRun }: { scenario: ScenarioDto; result: ScenarioResultDto | { error: string } | undefined; running: boolean; disabled: boolean; onRun: () => void }) {
   const exp = scenario.expect;
   return (
-    <section className="card">
+    <section className={`scenario ${result === undefined ? '' : 'error' in result ? 'failed' : result.passed ? 'passed' : 'failed'}`}>
       <div className="card-head">
         <div>
           <div className="muted small">{scenario.familyTitle} · {scenario.id}</div>

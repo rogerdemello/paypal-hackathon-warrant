@@ -20,8 +20,9 @@ export function Disputes() {
   useInterval(list.reload, 4000);
 
   return (
-    <div className="split">
+    <div className={`split ${id === undefined ? '' : 'has-detail'}`}>
       <Card
+        className="queue"
         title="Dispute queue"
         actions={
           <select value={state} onChange={(e) => setState(e.target.value)} aria-label="Filter by state">
@@ -135,7 +136,7 @@ function DisputePanel({ id, onChanged }: { id: string; onChanged: () => void }) 
       ) : (
         <>
           <Card title="1. The facts, computed from the signed record">
-            <div className="grid2">
+            <div className="fact-list">
               {FACT_IDS.map((fid) => {
                 const f = d.analysis?.facts[fid];
                 if (f === undefined) return null;
@@ -143,8 +144,8 @@ function DisputePanel({ id, onChanged }: { id: string; onChanged: () => void }) 
                 return (
                   <details key={fid}>
                     <summary>
-                      <span aria-hidden="true">{numeric ? '•' : f.value === true ? '✓' : '✕'}</span> {FACT_LABELS[fid] ?? f.name}
-                      {numeric && <strong>: {Math.round(Number(f.value))}</strong>} <span className="muted small">{fid}</span>
+                      <span className={`fact-mark ${numeric ? 'num' : f.value === true ? 'ok' : 'no'}`} aria-hidden="true">{numeric ? '•' : f.value === true ? '✓' : '✕'}</span> {FACT_LABELS[fid] ?? f.name}
+                      {numeric && <strong>: {Math.round(Number(f.value))}</strong>} <span className="fact-id">{fid}</span>
                     </summary>
                     <ul className="small mono" style={{ margin: 0, paddingLeft: 18 }}>
                       {f.evidence.map((e) => (
@@ -158,7 +159,7 @@ function DisputePanel({ id, onChanged }: { id: string; onChanged: () => void }) 
           </Card>
 
           <Card title="2. The decision (deterministic table, not a model)">
-            <div className="row">
+            <div className="row ruling">
               <Badge tone={outcomeTone(d.analysis.decision.outcome)}>{OUTCOME_LABELS[d.analysis.decision.outcome] ?? d.analysis.decision.outcome}</Badge>
               <span className="mono small">{d.analysis.decision.rule}</span>
               {d.analysis.decision.confidence === 'low' && <Badge tone="warn">low confidence</Badge>}
