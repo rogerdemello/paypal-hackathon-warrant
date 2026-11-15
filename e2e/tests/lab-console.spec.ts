@@ -5,7 +5,7 @@ test.describe('the Dispute Lab', () => {
     await page.goto('/lab');
     await expect(page.getByRole('heading', { name: 'Dispute Lab' })).toBeVisible();
 
-    const card = page.locator('section.card', { hasText: 'Buyer denies an authorised, delivered purchase' }).first();
+    const card = page.locator('section.scenario', { hasText: 'Buyer denies an authorised, delivered purchase' }).first();
     await card.getByRole('button', { name: 'Run' }).click();
     await expect(card.getByText('As the rules say.')).toBeVisible();
     await expect(card.getByText('Contest the dispute').first()).toBeVisible();
